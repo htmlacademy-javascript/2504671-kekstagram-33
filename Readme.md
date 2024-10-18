@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Olga Gulyakevich](https://up.htmlacademy.ru/javascript/33/user/2504671).
-* Наставник: `Неизвестно`.
+* Наставник: [Maxim Ivanov](https://htmlacademy.ru/profile/id342945).
 
 ---
 
