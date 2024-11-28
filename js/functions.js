@@ -18,11 +18,9 @@ const isPolindrom = (text) => {
 
 const extractDigits = (inputChar) => {
 
-  // Убирает пробелы и разбивает на символы
-  const nomalizedChars = inputChar.replaceAll(' ', '').split('');
+  const nomalizedChars = inputChar.replaceAll(' ', '').split(''); /* Убирает пробелы и разбивает на символы */
 
-  //Переменная для хранения цифр
-  let digits = '';
+  let digits = ''; /* Переменная для хранения цифр */
 
   for (const char of nomalizedChars) {
     if (!isNaN(char)) {
