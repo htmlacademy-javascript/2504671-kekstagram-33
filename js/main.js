@@ -1,4 +1,12 @@
 const PHOTO_DESCRIPTION_COUNT = 25;
+const PHOTOS_MIN = 1;
+const PHOTOS_MAX = 25;
+const LIKES_MIN = 15;
+const LIKES_MAX = 200;
+const AVATAR_MIN = 1;
+const AVATAR_MAX = 6;
+const COMMENTS_MIN = 0;
+const COMMENTS_MAX = 30;
 
 const NAMES = [
   'Настя_yellow',
@@ -39,44 +47,46 @@ const getIdGenerator = () => {
   };
 };
 
-const photoId = getIdGenerator();
-const commentId = getIdGenerator();
+const getPhotoId = getIdGenerator(); // Генератор ID для фотографий
+const getCommentId = getIdGenerator(); // Генератор ID для комментариев
 
 // Генерация случайного числа в диапазоне
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
+const getRandomInteger = (min, max) => {
+  const lower = Math.ceil(Math.min(min, max));
+  const upper = Math.floor(Math.max(min, max));
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
 
-const likesCount = getRandomInteger(15, 200);
 
 // Получение случайного элемента массива
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 // Генерация одного комментария
 const generateComment = () => ({
-  id: commentId(),
-  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-  message: `${getRandomArrayElement(MESSAGES)}`,
-  name: `${getRandomArrayElement(NAMES)}`,
+  id: getCommentId(),
+  avatar: `img/avatar-${getRandomInteger(AVATAR_MIN, AVATAR_MAX)}.svg`,
+  message: getRandomArrayElement(MESSAGES),
+  name: getRandomArrayElement(NAMES),
 });
 
 // Генерация массива комментариев
 const generateComments = () => {
-  const commentsCount = getRandomInteger(0, 30);
+  const commentsCount = getRandomInteger(COMMENTS_MIN, COMMENTS_MAX);
   return Array.from({length: commentsCount}, generateComment);
 };
 
 // Генерация одного описания фотографии
 const generatePhotoDescription = () => ({
-  id: photoId(),
-  url: `photos/${photoId()}.jpg`,
-  description: `${getRandomArrayElement(DESCRIPTIONS)}`,
-  likes: likesCount,
+  id: getPhotoId(),
+  url: `photos/${getRandomInteger(PHOTOS_MIN, PHOTOS_MAX)}.jpg`,
+  description: getRandomArrayElement(DESCRIPTIONS),
+  likes: getRandomInteger(LIKES_MIN, LIKES_MAX),
   comments: generateComments(),
 });
 
 // Генерация массива описаний фотографий
-const photoDescriptions = Array.from({length: PHOTO_DESCRIPTION_COUNT}, generatePhotoDescription);
+const photoDescriptions = Array.from(
+  {length: PHOTO_DESCRIPTION_COUNT},
+  generatePhotoDescription);
+
