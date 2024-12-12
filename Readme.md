@@ -45,7 +45,7 @@ https://olgagulyakevich.github.io/2504671-kekstagram-33/
 Склонируйте репозиторий:
 
 ```bash
- git clone https://github.com/OlgaGulyakevich/kekstagram.git
+ git clone https://github.com/OlgaGulyakevich/2504671-kekstagram-33.git
 ```
 Установите зависимости
 
