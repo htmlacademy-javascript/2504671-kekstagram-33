@@ -17,9 +17,7 @@ const isPolindrom = (text) => {
 // Функция для извлечения всех цифр из строки.
 
 const extractDigits = (inputChar) => {
-
   const nomalizedChars = inputChar.replaceAll(' ', '').split(''); /* Убирает пробелы и разбивает на символы */
-
   let digits = ''; /* Переменная для хранения цифр */
 
   for (const char of nomalizedChars) {
@@ -33,12 +31,10 @@ const extractDigits = (inputChar) => {
 // Функция для проверки, укладывается ли встреча в рамки рабочего дня.
 
 function isMeetingWithinWorkHours (workStart, workEnd, meetingStart, meetingDuration) {
-
   const timeToMinutes = (time) => {
     const [hours, minutes] = time.split(':').map(Number);
     return hours * 60 + minutes;
   };
-
   const workStartMinutes = timeToMinutes(workStart);
   const workEndMinutes = timeToMinutes(workEnd);
   const meetingStartMinutes = timeToMinutes(meetingStart);
