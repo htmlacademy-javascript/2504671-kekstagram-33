@@ -12,7 +12,6 @@ const getRandomInteger = (min, max) => {
   return Math.floor(result);
 };
 
-
 // Получение случайного элемента массива
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 

@@ -46,8 +46,8 @@ const generatePhotoDescription = () => ({
 });
 
 // Генерация массива описаний фотографий
-const generateDataPhotoDescriptions = () => Array.from(
+const generatePhotoDescriptions = () => Array.from(
   {length: PHOTO_DESCRIPTION_COUNT},
   generatePhotoDescription);
 
-export {generateDataPhotoDescriptions};
+export { generatePhotoDescriptions };
