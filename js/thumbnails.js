@@ -1,24 +1,36 @@
-const similarPhotoTemplate = document
-  .querySelector('#picture')
-  .content.querySelector('.picture');
+// Создает миниатюру фотографии на основе данных
 
-const PhotoFragment = document.createDocumentFragment();
+const createThumbnail = ({ url, description, likes, comments }) => {
+  const pictureTemplate = document
+    .querySelector('#picture')
+    .content.querySelector('.picture');
 
-const renderDataPhotos = (container, dataPhotos) => {
-  dataPhotos.forEach(({url, description, likes, comments}) => {
-    const photoElement = similarPhotoTemplate.cloneNode(true);
+  // Клонирование шаблона
+  const thumbnail = pictureTemplate.cloneNode(true);
 
-    const photoElementImg = photoElement.querySelector('.picture__img');
-    photoElementImg.src = url;
-    photoElement.alt = description;
+  // Настройка изображения
+  const thumbnailImg = thumbnail.querySelector('.picture__img');
+  thumbnailImg.src = url;
+  thumbnailImg.alt = description;
+  thumbnail.querySelector('.picture__likes').textContent = likes;
+  thumbnail.querySelector('.picture__comments').textContent = comments.length;
 
-    photoElement.querySelector('.picture__likes').textContent = likes;
-    photoElement.querySelector('.picture__comments').textContent = comments.length;
-
-    PhotoFragment.append(photoElement);
-  });
-
-  container.append(PhotoFragment);
+  return thumbnail;
 };
 
-export { renderDataPhotos };
+
+// Отрисовывает миниатюры фотографий в заданный контейнер
+
+const renderPhotos = (container, photos) => {
+  // Создание фрагмента для оптимизации
+  const fragment = document.createDocumentFragment();
+
+  photos.forEach((photo) => {
+    const thumbnail = createThumbnail(photo);
+    fragment.append (thumbnail);
+  });
+
+  container.append(fragment);
+};
+
+export { renderPhotos };
