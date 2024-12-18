@@ -1,7 +1,7 @@
-import {generatePhotoDescriptions} from './data.js';
-import {renderPhotos} from './thumbnails.js';
+import {generatePhotoData} from './data.js';
+import {renderThumbnails} from './thumbnails.js';
 
 const pictureContainer = document.querySelector('.pictures');
-const dataPhotos = generatePhotoDescriptions();
+const photos = generatePhotoData();
 
-renderPhotos(pictureContainer, dataPhotos);
+renderThumbnails(pictureContainer, photos);

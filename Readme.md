@@ -40,21 +40,3 @@ https://olgagulyakevich.github.io/2504671-kekstagram-33/
 * Сортировка и фильтрация изображений.
 * AJAX-запросы для отправки и получения данных.
 * Полноэкранный просмотр фотографии.
-## Как установить проект
-
-Склонируйте репозиторий:
-
-```bash
- git clone https://github.com/OlgaGulyakevich/2504671-kekstagram-33.git
-```
-Установите зависимости
-
-```bash
- npm install
-```
-
-Запустите локальный сервер:
-
-```bash
- npm run start
-```

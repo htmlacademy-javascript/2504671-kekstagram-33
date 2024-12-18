@@ -1,4 +1,4 @@
-export const PHOTO_DESCRIPTION_COUNT = 25;
+export const PHOTO_DATA_COUNT = 25;
 export const PHOTOS_MIN = 1;
 export const PHOTOS_MAX = 25;
 export const LIKES_MIN = 15;
