@@ -1,24 +1,40 @@
-const similarPhotoTemplate = document
-  .querySelector('#picture')
-  .content.querySelector('.picture');
+import { openFullScreen } from './fullscreen.js';
 
-const PhotoFragment = document.createDocumentFragment();
+// Создает миниатюру фотографии на основе данных
 
-const renderDataPhotos = (container, dataPhotos) => {
-  dataPhotos.forEach(({url, description, likes, comments}) => {
-    const photoElement = similarPhotoTemplate.cloneNode(true);
+const createThumbnail = ({ url, description, likes, comments }) => {
+  const pictureTemplate = document
+    .querySelector('#picture')
+    .content.querySelector('.picture');
 
-    const photoElementImg = photoElement.querySelector('.picture__img');
-    photoElementImg.src = url;
-    photoElement.alt = description;
+  // Клонирование шаблона
+  const newThumbnail = pictureTemplate.cloneNode(true);
 
-    photoElement.querySelector('.picture__likes').textContent = likes;
-    photoElement.querySelector('.picture__comments').textContent = comments.length;
+  // Настройка изображения
+  const newThumbnailImg = newThumbnail.querySelector('.picture__img');
+  newThumbnailImg.src = url;
+  newThumbnailImg.alt = description;
+  newThumbnail.querySelector('.picture__likes').textContent = likes;
+  newThumbnail.querySelector('.picture__comments').textContent = comments.length;
 
-    PhotoFragment.append(photoElement);
-  });
-
-  container.append(PhotoFragment);
+  return newThumbnail;
 };
 
-export { renderDataPhotos };
+
+// Отрисовывает миниатюры фотографий в заданный контейнер
+
+const renderThumbnails = (container, photos) => {
+  // Создание фрагмента для оптимизации
+  const fragment = document.createDocumentFragment();
+
+  photos.forEach((photo) => {
+    const thumbnail = createThumbnail(photo);
+    // Открывает полноразмерный режим просмотра фотографии
+    thumbnail.addEventListener('click', () => openFullScreen(photo));
+    fragment.append (thumbnail);
+  });
+
+  container.append(fragment);
+};
+
+export { renderThumbnails };

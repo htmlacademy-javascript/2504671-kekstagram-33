@@ -1,5 +1,5 @@
 import {
-  PHOTO_DESCRIPTION_COUNT,
+  PHOTO_DATA_COUNT,
   PHOTOS_MIN,
   PHOTOS_MAX,
   LIKES_MIN,
@@ -36,8 +36,8 @@ const generateComments = () => {
   return Array.from({length: commentsCount}, generateComment);
 };
 
-// Генерация одного описания фотографии
-const generatePhotoDescription = () => ({
+// Генерация одной фотографии
+const generatePhoto = () => ({
   id: generatePhotoId(),
   url: `photos/${getRandomInteger(PHOTOS_MIN, PHOTOS_MAX)}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
@@ -45,9 +45,9 @@ const generatePhotoDescription = () => ({
   comments: generateComments(),
 });
 
-// Генерация массива описаний фотографий
-const generatePhotoDescriptions = () => Array.from(
-  {length: PHOTO_DESCRIPTION_COUNT},
-  generatePhotoDescription);
+// Генерация массива фотографий
+const generatePhotoData = () => Array.from(
+  {length: PHOTO_DATA_COUNT},
+  generatePhoto);
 
-export { generatePhotoDescriptions };
+export { generatePhotoData };
